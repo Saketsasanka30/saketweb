@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">C Saket Sasankamouli</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Hello, I'm <span class="colorful-text">Your Name</span></h2>
+                    <p>A passionate creative showcasing a world of projects and ideas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <img src="https://via.placeholder.com/200" alt="Your Photo" class="profile-photo">
+                    <div class="about-text">
+                        <h3>About Me</h3>
+                        <p>This is where you'll introduce yourself. Talk about your background, what you're passionate about, and what drives you. Mention your hobbies and interests here to give a personal touch. For example: "In my free time, I love hiking and photography, which helps me stay creative and see the world from different perspectives."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h3>My Projects</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 1">
+                        <h4>Project One</h4>
+                        <p>A brief description of your project. Talk about what it is, what technologies you used, and what you learned.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 2">
+                        <h4>Project Two</h4>
+                        <p>A brief description of your project. Talk about what it is, what technologies you used, and what you learned.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 3">
+                        <h4>Project Three</h4>
+                        <p>A brief description of your project. Talk about what it is, what technologies you used, and what you learned.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="container">
+                <h3>My Achievements</h3>
+                <div class="achievements-list">
+                    <ul>
+                        <li><span class="colorful-text">Award Name:</span> A brief description of this award and what it means to you.</li>
+                        <li><span class="colorful-text">Certification:</span> Talk about this certification and how it has helped you grow.</li>
+                        <li><span class="colorful-text">Major Project Success:</span> Describe a significant success you had on a project and the outcome.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h3>Get in Touch</h3>
+                <p>Feel free to reach out to me on my social media or via email!</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">LinkedIn</a>
+                    <a href="#" class="social-btn">GitHub</a>
+                    <a href="#" class="social-btn">Twitter</a>
+                    <a href="mailto:youremail@example.com" class="social-btn">Email</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
