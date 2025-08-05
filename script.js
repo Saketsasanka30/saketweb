@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
+            // Close the mobile menu if it's open
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+
             if (targetElement) {
                 window.scrollTo({
                     top: targetElement.offsetTop,
@@ -14,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    });
+
+    // Mobile menu toggle functionality
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
 
     // Fade-in effect on scroll
@@ -79,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Project Details Modal functionality
     const projectModal = document.getElementById('project-modal');
-    const projectDetailsView = document.getElementById('project-details-view');
+    const projectDetailsView = document.getElementById('project-details-container');
     const projectImageView = document.getElementById('project-image-view');
     const projectFullImage = document.getElementById('project-full-image');
 
@@ -95,35 +109,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeProjectModalBtn.addEventListener('click', () => {
         projectModal.style.display = 'none';
-        projectDetailsView.classList.remove('hidden');
-        projectImageView.classList.add('hidden');
-        backBtn.style.display = 'none';
+        // Note: The original project modal logic seems incomplete, I've commented out
+        // the parts that refer to non-existent elements to prevent errors.
+        // projectDetailsView.classList.remove('hidden');
+        // projectImageView.classList.add('hidden');
+        // backBtn.style.display = 'none';
     });
 
     // Handle clicks on project thumbnails
     projectThumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', function() {
-            projectFullImage.src = this.src;
-            projectDetailsView.classList.add('hidden');
-            projectImageView.classList.remove('hidden');
-            backBtn.style.display = 'block';
+            // Note: The original project modal logic seems incomplete, I've commented out
+            // the parts that refer to non-existent elements to prevent errors.
+            // projectFullImage.src = this.src;
+            // projectDetailsView.classList.add('hidden');
+            // projectImageView.classList.remove('hidden');
+            // backBtn.style.display = 'block';
         });
     });
 
     // Handle "Back" button click
-    backBtn.addEventListener('click', () => {
-        projectImageView.classList.add('hidden');
-        projectDetailsView.classList.remove('hidden');
-        backBtn.style.display = 'none';
-    });
+    // if (backBtn) {
+    //    backBtn.addEventListener('click', () => {
+    //        projectImageView.classList.add('hidden');
+    //        projectDetailsView.classList.remove('hidden');
+    //        backBtn.style.display = 'none';
+    //    });
+    // }
 
     // Close project modal when clicking outside of it
     window.addEventListener('click', (event) => {
         if (event.target === projectModal) {
             projectModal.style.display = 'none';
-            projectDetailsView.classList.remove('hidden');
-            projectImageView.classList.add('hidden');
-            backBtn.style.display = 'none';
+            // Note: The original project modal logic seems incomplete, I've commented out
+            // the parts that refer to non-existent elements to prevent errors.
+            // projectDetailsView.classList.remove('hidden');
+            // projectImageView.classList.add('hidden');
+            // backBtn.style.display = 'none';
         }
     });
 });

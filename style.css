@@ -92,6 +92,26 @@ nav li a:hover::after {
     width: 100%;
 }
 
+/* Hamburger Menu for Mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.nav-links {
+    transition: all 0.5s ease-in-out;
+}
+
 /* Hero Section */
 #hero {
     height: 100vh;
@@ -109,6 +129,7 @@ nav li a:hover::after {
 .hero-content {
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .hero-content h2 {
@@ -508,16 +529,59 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column;
+        flex-direction: row; /* Changed to row for proper alignment */
+        align-items: center; /* Aligns items vertically in the center */
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: static; /* Use static positioning to be part of the flow */
+        margin-left: auto; /* Push the menu to the right */
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: var(--secondary-bg);
+        margin-top: 0;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .nav-links.active {
+        display: block;
     }
 
     nav ul {
         flex-direction: column;
-        margin-top: 1rem;
+        width: 100%;
+        margin-top: 0;
     }
 
     nav li {
         margin: 0.5rem 0;
+        border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        padding-bottom: 0.5rem;
+    }
+
+    nav li:last-child {
+        border-bottom: none;
+    }
+
+    nav li a {
+        display: block;
+        padding: 0.5rem 0;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    nav li a:hover::after {
+        width: 0;
     }
 
     .about-content {
@@ -526,8 +590,10 @@ footer {
     }
 
     .social-links a {
-        margin: 0.5rem 0;
-        width: 100%;
-        display: block;
+        margin: 0.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
     }
 }
