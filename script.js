@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop,
+                    top: targetElement.offsetTop - 60, // Adjust for fixed header
                     behavior: 'smooth'
                 });
             }
         });
     });
 
-    // Mobile menu toggle functionality
+    // Mobile menu toggle
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
 
@@ -30,21 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Fade-in effect on scroll
+    // Fade-in animation on scroll
     const sections = document.querySelectorAll('section');
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                obs.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.2 });
+
     sections.forEach(section => {
         section.classList.add('hidden');
         observer.observe(section);
@@ -55,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             const content = toggle.nextElementSibling;
-            const is_open = content.classList.toggle('open');
-            toggle.classList.toggle('active', is_open);
+            const isOpen = content.classList.toggle('open');
+            toggle.classList.toggle('active', isOpen);
 
-            if (is_open) {
+            if (isOpen) {
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
                 content.style.maxHeight = null;
@@ -66,86 +62,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hobbies Image Modal functionality
+    // Hobbies Image Modal
     const imageModal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
-    const hobbiesImages = document.querySelectorAll('.hobbies-gallery-container .image-grid img');
     const closeImageModalBtn = document.querySelector('.close-btn');
 
-    hobbiesImages.forEach(img => {
-        img.addEventListener('click', function() {
+    document.querySelectorAll('.image-grid img').forEach(img => {
+        img.addEventListener('click', () => {
             imageModal.style.display = 'block';
-            modalImage.src = this.src;
+            modalImage.src = img.src;
         });
     });
 
-    // Close the image modal when the close button is clicked
     closeImageModalBtn.addEventListener('click', () => {
         imageModal.style.display = 'none';
     });
 
-    // Close the image modal when the user clicks anywhere outside of the image
     window.addEventListener('click', (event) => {
         if (event.target === imageModal) {
             imageModal.style.display = 'none';
         }
     });
 
-    // Project Details Modal functionality
+    // Project Modal (for Human-Following Robot)
     const projectModal = document.getElementById('project-modal');
-    const projectDetailsView = document.getElementById('project-details-container');
-    const projectImageView = document.getElementById('project-image-view');
-    const projectFullImage = document.getElementById('project-full-image');
-
-    const viewProjectBtn = document.querySelector('.project-btn');
     const closeProjectModalBtn = document.querySelector('.close-btn-project');
-    const projectThumbnails = document.querySelectorAll('.project-image-grid img');
-    const backBtn = document.getElementById('back-btn');
 
-    viewProjectBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        projectModal.style.display = 'block';
+    document.querySelectorAll('.project-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Only show modal for "View Project" button, not for external links
+            if (btn.getAttribute('data-project') === 'robot') {
+                e.preventDefault();
+                projectModal.style.display = 'block';
+            }
+        });
     });
 
     closeProjectModalBtn.addEventListener('click', () => {
         projectModal.style.display = 'none';
-        // Note: The original project modal logic seems incomplete, I've commented out
-        // the parts that refer to non-existent elements to prevent errors.
-        // projectDetailsView.classList.remove('hidden');
-        // projectImageView.classList.add('hidden');
-        // backBtn.style.display = 'none';
     });
 
-    // Handle clicks on project thumbnails
-    projectThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            // Note: The original project modal logic seems incomplete, I've commented out
-            // the parts that refer to non-existent elements to prevent errors.
-            // projectFullImage.src = this.src;
-            // projectDetailsView.classList.add('hidden');
-            // projectImageView.classList.remove('hidden');
-            // backBtn.style.display = 'block';
-        });
-    });
-
-    // Handle "Back" button click
-    // if (backBtn) {
-    //    backBtn.addEventListener('click', () => {
-    //        projectImageView.classList.add('hidden');
-    //        projectDetailsView.classList.remove('hidden');
-    //        backBtn.style.display = 'none';
-    //    });
-    // }
-
-    // Close project modal when clicking outside of it
     window.addEventListener('click', (event) => {
         if (event.target === projectModal) {
             projectModal.style.display = 'none';
-            // Note: The original project modal logic seems incomplete, I've commented out
-            // the parts that refer to non-existent elements to prevent errors.
-            // projectDetailsView.classList.remove('hidden');
-            // projectImageView.classList.add('hidden');
-            // backBtn.style.display = 'none';
         }
     });
 });
